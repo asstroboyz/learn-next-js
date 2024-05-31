@@ -8,8 +8,8 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start; /* Mengatur konten di bagian atas */
+  align-items: start;
 }
 
 .footer {
@@ -28,6 +28,18 @@
   flex-grow: 1;
 }
 
+.table-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  padding: 1rem 0;
+}
+
+.table {
+  width: 90%;
+  margin: 0 auto; /* Ensure table takes full width but aligns left */
+}
+
 .title a {
   color: #0070f3;
   text-decoration: none;
@@ -43,6 +55,7 @@
   margin: 0;
   line-height: 1.15;
   font-size: 4rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family */
 }
 
 .title,
@@ -56,6 +69,12 @@
   font-size: 1.5rem;
 }
 
+.inti {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Optional: Align items vertically in the center */
+}
+
 .code {
   background: #fafafa;
   border-radius: 5px;
@@ -63,6 +82,12 @@
   font-size: 1.1rem;
   font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
     Bitstream Vera Sans Mono, Courier New, monospace;
+}
+
+.menu-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center; /* Optional: Align items vertically in the center */
 }
 
 .grid {
@@ -81,15 +106,17 @@
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
-  transition: color 0.15s ease, border-color 0.15s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   max-width: 300px;
+  background: linear-gradient(45deg, #ffffff, #f3f3f3); /* Gradient background */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font family */
 }
 
 .card:hover,
 .card:focus,
 .card:active {
-  color: #0070f3;
-  border-color: #0070f3;
+  transform: scale(1.05); /* Scale up on hover */
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3); /* Increased shadow on hover */
 }
 
 .card h2 {
@@ -106,6 +133,71 @@
 .logo {
   height: 1em;
   margin-left: 0.5rem;
+}
+
+/* Style for modal */
+.modal {
+  display: none; /* Modal default hidden */
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5); /* Background color with opacity */
+}
+.table-fixed {
+  table-layout: fixed;
+  width: 100%;
+}
+
+.table-fixed th, .table-fixed td {
+  padding: 0.25rem 0.5rem;
+}
+
+.th-id { width: 8%; }
+.th-name { width: 25%; }
+.th-description { width: 34%; }
+.th-update, .th-delete { width: 16%; }
+
+/* Style for modal box */
+.modal-box {
+  background-color: white;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 5px;
+  width: 50%; /* Adjust the width as needed */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add box shadow */
+}
+
+/* Style for modal content */
+.modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for modal title */
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+/* Style for modal body */
+.modal-body {
+  margin-bottom: 1rem;
+}
+
+/* Style for modal footer */
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Style for modal buttons */
+.modal-button {
+  margin-left: 1rem;
 }
 
 @media (max-width: 600px) {
@@ -125,5 +217,91 @@
   }
   .logo img {
     filter: invert(1);
+  }
+}
+/* Efek hover untuk kartu */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px); /* Menggeser kartu ke atas saat dihover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Bayangan yang lebih jelas */
+}
+
+/* Animasi untuk modal */
+.modal {
+  animation: fadeIn 0.3s ease; /* Animasi muncul */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.notification {
+  background-color: #007bff; /* Warna latar belakang notifikasi */
+  color: #fff; /* Warna teks notifikasi */
+  padding: 1rem; /* Padding untuk memberikan ruang di dalam notifikasi */
+  border-radius: 5px; /* Memuluskan sudut notifikasi */
+  margin-bottom: 1rem; /* Jarak antara notifikasi dengan elemen di bawahnya */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan lembut untuk notifikasi */
+  position: fixed; /* Mengatur posisi notifikasi */
+  top: 50%; /* Mengatur posisi vertikal ke tengah */
+  left: 50%; /* Mengatur posisi horizontal ke tengah */
+  transform: translate(-50%, -50%); /* Menggeser notifikasi ke tengah layar */
+  z-index: 999; /* Mengatur lapisan teratas agar notifikasi selalu tampil di atas elemen lain */
+  animation: slideIn 0.3s ease; /* Animasi muncul */
+}
+
+/* Home.module.css */
+
+.fontBold {
+  font-weight: bold;
+}
+
+.btnLogout {
+  /* Common style for both buttons */
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btnCancel {
+  /* Style for Cancel button */
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #333;
+  margin-right: 10px;
+}
+
+.btnPrimary {
+  /* Style for Logout button */
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+}
+
+/* Hover styles */
+.btnLogout:hover {
+  background-color: #e0e0e0;
+}
+
+.btnPrimary:hover {
+  background-color: #0056b3;
+}
+
+
+@keyframes slideIn {
+  from {
+    transform: translate(-50%, -100%); /* Mulai dari luar layar di atas */
+    opacity: 0; /* Awal transparan */
+  }
+  to {
+    transform: translate(-50%, -50%); /* Akhir di tengah layar */
+    opacity: 1; /* Tampil transparan */
   }
 }
